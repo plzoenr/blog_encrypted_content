@@ -1,0 +1,13 @@
+<turbo-frame id="import_response">
+  <% if flash[:error].present? %>
+    <div class="mt-4 p-3 bg-transparent text-red-700 rounded-lg border border-red-500">
+      <%= flash[:error] %>
+    </div>
+  <% end %>
+
+  <% if flash[:notice].present? %>
+    <div class="mt-4 p-3 bg-transparent text-green-700 rounded-lg border border-green-500">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+</turbo-frame>

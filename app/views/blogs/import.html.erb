@@ -1,0 +1,29 @@
+<div class="bg-neutral-900 text-neutral-100 p-6 rounded-lg shadow-lg">
+  <h1 class="text-2xl font-bold mb-4">Import Blog Posts</h1>
+
+  <%= form_with url: import_path,
+                multipart: true,
+                method: 'POST',
+                data: { turbo: true },
+                html: { class: 'space-y-4' } do |form| %>
+    <div class="bg-neutral-800 p-4 rounded-lg border border-neutral-700">
+      <%= form.label :file, "JSON File", class: "block text-lg font-medium text-neutral-300 mb-2" %>
+      <%= form.file_field :file, class: "block w-full text-sm text-neutral-300 bg-neutral-700 border border-neutral-600 rounded-lg cursor-pointer focus:outline-none" %>
+    </div>
+
+    <div id="import_response">
+      <%= render 'import_response' %>
+    </div>
+
+    <div class="mt-5 text-right">
+      <%= link_to 'Cancel',
+                  root_path,
+                  class: 'btn bg-gray-500 px-4 py-2 rounded text-white'
+      %>
+
+      <%= form.submit "Create Blog",
+                      class: "px-4 py-2 font-semibold text-white bg-orange-600 hover:bg-orange-500 rounded-lg shadow-md transition-all" %>
+    </div>
+  <% end %>
+</div>
+

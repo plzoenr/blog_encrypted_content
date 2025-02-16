@@ -1,0 +1,11 @@
+<turbo-frame id="blog_error">
+  <% if @blog.errors.any? %>
+    <div class="mt-4 p-3 bg-transparent text-red-700 rounded-lg border border-red-500">
+      <ul class="list-disc pl-5">
+        <% @blog.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</turbo-frame>

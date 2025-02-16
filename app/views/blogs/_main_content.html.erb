@@ -1,0 +1,8 @@
+<turbo-frame id="blog_content">
+  <%= render "blog", blog: blog, context: 'show_page' %>
+</turbo-frame>
+
+<div class="mt-5 p-5">
+  <%= render 'error' %>
+  <%= render 'form', blog: blog, hidden_form: true %>
+</div>

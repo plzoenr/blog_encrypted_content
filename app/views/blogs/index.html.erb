@@ -1,0 +1,21 @@
+<% content_for :title, "Blogs" %>
+
+<div class="w-full">
+  <div id="blogs" class="flex-1">
+    <div class="space-y-4 mt-3">
+      <% if @blogs.any? %>
+        <% @blogs.each do |blog| %>
+          <div class="p-4 rounded-lg shadow max-w-[75ch]">
+            <%= render blog, context: 'index_page' %>
+          </div>
+
+          <div class="px-3 mt-3">
+            <hr />
+          </div>
+        <% end %>
+      <% else %>
+        <p class="text-center my-10">No blogs found.</p>
+      <% end %>
+    </div>
+  </div>
+</div>
