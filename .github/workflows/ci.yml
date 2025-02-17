@@ -41,9 +41,18 @@ jobs:
         run: |
           bin/rails db:migrate
 
+      - name: Debug Encryption Keys
+        run: |
+          echo "Primary Key: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY }}"
+          echo "Deterministic Key: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY }}"
+          echo "Key Derivation Salt: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT }}"
+
       - name: Run tests
         env:
           RAILS_ENV: test
+          ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY }}
+          ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY }}
+          ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT }}
         run: bundle exec rspec
 
   deploy:
