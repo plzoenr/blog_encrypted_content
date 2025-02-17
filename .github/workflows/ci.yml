@@ -29,21 +29,6 @@ jobs:
         run: |
           bin/rails db:migrate
 
-      - name: Debug Encryption Keys
-        run: |
-          echo "Primary Key: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY }}"
-          echo "Deterministic Key: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY }}"
-          echo "Key Derivation Salt: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT }}"
-
-      - name: Test secret presence
-        run: |
-            if [ -z "$ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY" ]; then
-              echo "Primary key is not set"
-              exit 1
-            else
-              echo "Primary key is available"
-            fi     
-
       - name: Run tests
         run: bundle exec rspec
 
