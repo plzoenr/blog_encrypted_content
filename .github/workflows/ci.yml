@@ -84,7 +84,9 @@ jobs:
       - name: Deploy with Kamal
         env:
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-          DOCKER_REGISTRY_USER: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_REGISTRY_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          KAMAL_REGISTRY_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  # Changed to match deploy.yml
+          ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY }}
+          ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY }}
+          ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT }}
         run: |
-          kamal deploy --verbose
+          kamal deploy
