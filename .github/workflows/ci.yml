@@ -25,27 +25,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y sqlite3 libsqlite3-dev
 
-      - name: Set Active Record Encryption Keys
-        env:
-          ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY }}
-          ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY }}
-          ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT }}
-        run: echo "Encryption keys set."
-
       - name: Setup test database
-        env:
-          RAILS_ENV: test
-          ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY }}
-          ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY }}
-          ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT }}
         run: |
           bin/rails db:migrate
-
-      - name: Debug ENV variable
-        run: |
-          echo "Listing environment variables..."
-          env
-          printenv 
 
       - name: Debug Encryption Keys
         run: |
@@ -53,12 +35,16 @@ jobs:
           echo "Deterministic Key: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY }}"
           echo "Key Derivation Salt: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT }}"
 
+      - name: Test secret presence
+        run: |
+            if [ -z "$ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY" ]; then
+              echo "Primary key is not set"
+              exit 1
+            else
+              echo "Primary key is available"
+            fi     
+
       - name: Run tests
-        env:
-          RAILS_ENV: test
-          ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY }}
-          ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY }}
-          ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT }}
         run: bundle exec rspec
 
   deploy:
