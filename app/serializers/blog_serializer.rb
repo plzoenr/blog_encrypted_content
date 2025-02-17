@@ -1,4 +1,4 @@
-class BlogSerializer
+class BlogSerializer < Blueprinter::Base
   identifier :id
 
   field :author
