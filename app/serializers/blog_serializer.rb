@@ -3,8 +3,5 @@ class BlogSerializer
 
   field :author
 
-  attribute :content do |blog|
-    encoded = Base64.encode64(blog.content)
-    encoded
-  end
+  field :content_base64
 end
