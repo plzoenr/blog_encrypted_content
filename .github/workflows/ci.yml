@@ -41,6 +41,12 @@ jobs:
         run: |
           bin/rails db:migrate
 
+      - name: Debug ENV variable
+        run: |
+          echo "Listing environment variables..."
+          env
+          printenv 
+
       - name: Debug Encryption Keys
         run: |
           echo "Primary Key: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY }}"
