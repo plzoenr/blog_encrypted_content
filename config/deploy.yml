@@ -7,7 +7,7 @@ image: aldelhyne/blog_encrypted_content
 # Deploy to these servers.
 servers:
   web:
-    - 146.190.81.149
+    - 157.245.158.126
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -75,7 +75,8 @@ builder:
   arch: amd64
 
   # # Build image via remote server (useful for faster amd64 builds on arm64 computers)
-  # remote: ssh://docker@docker-builder-server
+  remote: ssh://root@157.245.158.126
+  local: false
   #
   # # Pass arguments and secrets to the Docker build process
   # args:
