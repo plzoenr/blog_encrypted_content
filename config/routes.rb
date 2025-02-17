@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get  '/:slug', to: 'blogs#show', as: :show_blog
 
   resources :blogs, only: [:index, :update], param: :slug
+  get "up" => "rails/health#show", as: :rails_health_check
 end
