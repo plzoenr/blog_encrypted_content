@@ -10,13 +10,12 @@ RSpec.describe Blogs::ImportService do
       let(:file) { valid_file }
 
       before do
-        allow(BlogJsonValidator).to receive(:validate)
+        allow(Blogs::BlogJsonValidator).to receive(:validate)
                                       .and_return([true, nil])
       end
 
       it 'successfully imports blogs' do
         result = service.call
-        byebug
 
         expect(Blog.all.count).to eq(2)
 
@@ -67,7 +66,7 @@ RSpec.describe Blogs::ImportService do
       let(:error_message) { "Invalid schema" }
 
       before do
-        allow(BlogJsonValidator).to receive(:validate)
+        allow(Blogs::BlogJsonValidator).to receive(:validate)
                                       .and_return([false, error_message])
       end
 
@@ -85,7 +84,7 @@ RSpec.describe Blogs::ImportService do
       let(:file) { valid_file }
 
       before do
-        allow(BlogJsonValidator).to receive(:validate)
+        allow(Blogs::BlogJsonValidator).to receive(:validate)
                                       .and_return([true, nil])
         allow_any_instance_of(Blog).to receive(:save!)
                                          .and_raise(ActiveRecord::RecordInvalid.new(Blog.new))

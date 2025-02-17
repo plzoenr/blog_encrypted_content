@@ -30,7 +30,7 @@ module Blogs
     end
 
     def validate_json_schema(json_data)
-      validation_result, error_message = BlogJsonValidator.validate(json_data)
+      validation_result, error_message = Blogs::BlogJsonValidator.validate(json_data)
       raise "JSON Validation error: #{error_message}" unless validation_result
     end
 
