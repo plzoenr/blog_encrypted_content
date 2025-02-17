@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Blogs::ImportService do
-  before(:each) do
-    Blog.create!(content: "Test Blog AAAAAAA", author: "Test Author")
-  end
   let(:service) { described_class.new(file) }
   let(:valid_file) { File.open(Rails.root.join('spec/static_fixtures/files/valid_blogs.json')) }
   let(:invalid_file) { File.open(Rails.root.join('spec/static_fixtures/files/invalid_blogs.json')) }
