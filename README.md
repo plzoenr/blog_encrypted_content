@@ -1,24 +1,27 @@
-# README
+# Setup Guide
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Base requirement
 
-Things you may want to cover:
+* ruby-3.3.0
 
-* Ruby version
+### Set up the base project by 
 
-* System dependencies
+1. run bundle
 
-* Configuration
+ > ```bundle install```
 
-* Database creation
+2. run migration
 
-* Database initialization
+ > ```rails db:migrate```
 
-* How to run the test suite
+3. generate encryption key then store in .env file or add to your .bashrc
 
-* Services (job queues, cache servers, search engines, etc.)
+ > ```bin/rails db:encryption:init```
 
-* Deployment instructions
+### Start server
 
-* ...
+ > ```bin/dev```
+
+### Run the test by
+
+ > ```rspec spec```
