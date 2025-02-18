@@ -1,6 +1,6 @@
 # Demo
 
-[link to demo website](blog.plzoenr.com)
+[link to demo website](https://blog.plzoenr.com)
 
 # Setup Guide
 
