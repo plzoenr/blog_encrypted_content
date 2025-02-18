@@ -12,18 +12,21 @@
 
 1. run bundle
 
- ```bundle install```
+     ```bundle install```
+
 
 2. run migration
+3. 
 
- ```rails db:migrate```
+     ```rails db:migrate```
+
 
 3. generate encryption key then store in .env file or add to your .bashrc or any you're using
 
- ```bin/rails db:encryption:init```
+     ```bin/rails db:encryption:init```
 
-  3.1 the result will return
 
+* 3.1 the result will return    
 ```
 Add this entry to the credentials of the target environment:
 
@@ -32,7 +35,7 @@ active_record_encryption:
   deterministic_key: deterministic_key_xxxxxxxx
   key_derivation_salt: key_derivation_salt_xxxxxx
 ```
-  3.2 after encryption has been generated store value in .env or add to .bashrc or bash you're using
+* 3.2 after encryption has been generated store value in .env or add to .bashrc or bash you're using
 
 #### for .env file
 1. create .env file
