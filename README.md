@@ -6,7 +6,7 @@
 
 ### Base requirement
 
-* ruby-3.3.0
+``` ruby-3.3.0 ```
 
 ### Set up the base project by 
 
@@ -16,7 +16,7 @@
 
 
 2. run migration
-3. 
+ 
 
      ```rails db:migrate```
 
