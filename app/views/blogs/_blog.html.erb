@@ -7,7 +7,7 @@
         <%= blog.content.html_safe %>
       </div>
     <% else %>
-      <div class="line-clamp-3">
+      <div class="line-clamp-3 max-w-[80ch] break-words">
         <%#= use strip_tags in content have image, that image should not show in index page %>
         <%= strip_tags(blog.content.html_safe) %>
       </div>
