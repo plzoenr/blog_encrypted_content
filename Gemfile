@@ -43,7 +43,7 @@ gem "image_processing", "~> 1.2"
 gem "dotenv-rails"
 gem "breadcrumbs_on_rails"
 gem "tailwindcss-rails"
-gem "tailwindcss-ruby", "3.4.13"
+gem "tailwindcss-ruby", "4.0.7"
 gem "tinymce-rails"
 gem "jsonapi-serializer"
 gem 'blueprinter'
